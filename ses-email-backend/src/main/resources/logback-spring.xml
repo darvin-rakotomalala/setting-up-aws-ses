@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <springProperty scope="context" name="LOGS" source="modules.logging.logs.folder.path" defaultValue="./logs"/>
-    <springProperty scope="context" name="appName" source="modules.logging.application.name" defaultValue="UNKNOWN"/>
+    <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="UNKNOWN"/>
     <property name="LOG_LEVEL_PATTERN" value="%-5level"/>
 
     <!-- Shared by every profile. On Lambda, stdout is shipped to the function's

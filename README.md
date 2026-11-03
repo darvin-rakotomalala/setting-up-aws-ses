@@ -78,6 +78,8 @@ $ terraform apply -var-file="terraform.tfvars" -auto-approve
 # Also confirm the SNS subscription emails.
 ```
 
+![1-Outputs.png](Screenshot%20verification/1-Outputs.png)
+
 ## Verification and Testing
 
 ***
@@ -91,6 +93,10 @@ $ terraform apply -var-file="terraform.tfvars" -auto-approve
     -H 'Content-Type: application/json' \
     -d '{"senderName":"Ada","senderEmail":"ada@example.org","senderSubject":"Hello","senderMessage":"Nice site!"}'
     ```
+
+![7-Post contact.png](Screenshot%20verification/7-Post%20contact.png)
+
+![8-Email test result.png](Screenshot%20verification/8-Email%20test%20result.png)
 
 ## Best Practices
 

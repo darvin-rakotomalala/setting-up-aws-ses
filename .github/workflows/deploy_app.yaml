@@ -18,7 +18,7 @@ env:
   FUNCTION_NAME: ${{ vars.FUNCTION_NAME }}
   ALIAS_NAME: ${{ vars.ALIAS_NAME }}
   ARTIFACT_BUCKET: ${{ vars.ARTIFACT_BUCKET }}
-  WORKING_DIR: './ses-email-backend'
+  WORKING_DIR: 'ses-email-backend'
 
 permissions:
   id-token: write       # Required for requesting the OIDC JWT
@@ -48,11 +48,11 @@ jobs:
           cache: 'maven'
 
       - name: Build project with Maven
-        working-directory: ${WORKING_DIR}
+        working-directory: ${{ env.WORKING_DIR }}
         run: mvn clean package -DskipTests
 
       - name: Rename JAR
-        working-directory: ${WORKING_DIR}
+        working-directory: ${{ env.WORKING_DIR }}
         run: |
           cd target
           mv ses-email-backend-0.0.1-SNAPSHOT-lambda-package.zip ses-email-backend.zip
@@ -67,7 +67,7 @@ jobs:
         id: upload
         run: |
           KEY="${FUNCTION_NAME}/${GITHUB_SHA}.zip"
-          aws s3 cp ${WORKING_DIR}/target/ses-email-backend.zip "s3://${ARTIFACT_BUCKET}/${KEY}"
+          aws s3 cp ${{ env.WORKING_DIR }}/target/ses-email-backend.zip "s3://${ARTIFACT_BUCKET}/${KEY}"
           echo "key=$KEY" >> "$GITHUB_OUTPUT"
 
       # --publish creates a new numbered version. Because SnapStart is set to

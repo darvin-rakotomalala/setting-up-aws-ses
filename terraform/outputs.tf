@@ -41,3 +41,8 @@ output "lambda_artifacts_bucket_name" {
   description = "Set this as the ARTIFACT_BUCKET variable in the GitHub dev environment"
   value       = module.s3.lambda_artifacts_bucket_name
 }
+
+output "ses_configuration_set" {
+  description = "The name of the SES v2 configuration set."
+  value       = module.ses.ses_configuration_set
+}

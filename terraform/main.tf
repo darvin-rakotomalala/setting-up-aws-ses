@@ -39,7 +39,7 @@ module "lambda" {
   local_use_snapstart                        = local.use_snapstart
   log_group_lambda_name                      = module.cloudwatch.log_groups_name.lambda
   sender_email                               = var.sender_email
-  ses_configuration_set                      = "${local.naming_prefix}-dev"
+  ses_configuration_set                      = module.ses.ses_configuration_set
   cold_start_strategy                        = var.cold_start_strategy
   enable_xray                                = var.enable_xray
   lambda_alias_name                          = var.lambda_alias_name

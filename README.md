@@ -113,3 +113,18 @@ To destroy all resources, run ```terraform destroy -var-file="terraform.tfvars" 
 
 ***
 
+This project provides a fully automated, serverless backend solution for handling website contact form submissions using
+**Spring Boot 4** and **Java 21** deployed on **AWS Lambda**.
+
+By leveraging **Terraform** for Infrastructure-as-Code (IaC) and **GitHub Actions** with **OIDC** for continuous
+deployment, the entire infrastructure stack—including **API Gateway**, **Lambda**, **AWS SES**, **KMS**, and
+**CloudWatch** monitoring—is provisioned reliably and reproducibly.
+
+**Key Highlights:**
+
+* **Serverless & Cost-Effective**: Eliminates the overhead of maintaining dedicated mail servers by offloading email
+  delivery to AWS SES and execution to AWS Lambda.
+* **Infrastructure-as-Code**: Enables fully automated deployment, configuration updates, and cleanup using Terraform
+  modules.
+* **Production-Ready Operations**: Built-in health checks (`/api/health`), robust CloudWatch logging, KMS encryption,
+  and automated alert notifications via SNS for critical metrics.

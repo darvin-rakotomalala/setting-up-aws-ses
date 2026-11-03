@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: ses-email-backend
+  profiles:
+    active: local
+  main:
+    banner-mode: "off"
+
+amazon:
+  aws:
+    region: us-east-1
+
+app:
+  ses:
+    # Injected by Terraform as Lambda environment variables.
+    sender-email: ${SENDER_EMAIL:}
+    recipient-email: ${RECIPIENT_EMAIL:}
+    configuration-set: ${SES_CONFIGURATION_SET:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.ce: INFO
+    software.amazon.awssdk: WARN
+
+cors:
+  allowed:
+    origins: '*'
+
+application:
+  description: '@project.description@'
+  name: '@project.artifactId@'
+
+build:
+  timestamp: '@maven.build.timestamp@'
+  version: '@project.version@'
+
+server:
+  port: 8080
